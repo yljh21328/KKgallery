@@ -1,0 +1,23 @@
+.container .hero-unit {
+    padding: 0;
+    text-align: center;
+}
+.carousel-inner img {
+    margin: 0 auto;
+    height:450px;
+}
+
+.form_info input {
+    display: block;
+}
+
+.form_info label.sexual {
+    display: inline;
+}
+.form_info input.gender {
+    display: inline;
+}
+
+label.error {
+    color: #c60f13;
+}

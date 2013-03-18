@@ -1,0 +1,36 @@
+<!-- BEGIN: main -->
+{FILE {main_top}}
+<!-- BEGIN: container -->
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/jquery.validate.js"></script>
+
+<script>
+$(document).ready(function(){
+
+    $('#myModal').modal('toggle');
+    $('#myModal').on('hidden', function () {
+        window.location.href = "index.php"; //如果選擇Skip，則這邊可以做跳轉
+    })
+    setTimeout("top.location.href = 'index.php'",3000);
+});
+</script>
+    <!-- Modal -->
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">{TITLE}</h3>
+        </div>
+        <div class="modal-body">
+            <div class="form">{MESSAGE}
+            <div class="refresh">三秒後自動跳轉!!!</div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="submit" onclick="$('#myModal').modal('hide');">Redirect Now</button>
+                </div>
+            </div>
+            </div>
+        </div> 
+    </div>
+<!-- END: container -->
+{FILE {main_down}}
+<!-- END: main -->

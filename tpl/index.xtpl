@@ -1,0 +1,136 @@
+<!-- BEGIN: main -->
+{FILE {main_top}}
+    <!-- BEGIN: container -->
+<script>
+    $(document).ready(function() {
+        $("#email").blur(function() {
+            if($("#email").valid()) {
+                //alert($("#email").valid());
+                $("label.error:first").html("<img src='./img/loading.gif'/>驗證使用者帳號");
+                $("label.error img").css("display","inline");
+                $("label.error").css("display","block");
+                //alert($(".email").val());
+                /**/
+                
+                $.post("check_username.php",
+                {
+                    email: $(".email:eq(1)").val()
+                },
+                function(data,status) {
+                    $("label.error:first").html(data);
+                    //alert(data);
+                });
+            }   
+        });
+        $( "#register_form" ).validate({
+            rules: {
+                password: {
+                    required: true,
+                    minlength: 5
+                },
+                confirm_password: {
+                    required: true,
+                    minlength: 5,
+                    equalTo: "#password"
+                }
+            },
+            messages: {
+                password: {
+                    required: "Please provide a password",
+                    minlength: "Your password must be at least 5"
+                },
+                confirm_password: {
+                    required: "Please provide a password",
+                    minlength: "Your password must be at least 5",
+                    equalTo: "Please enter the same password as above"
+                }
+            }
+        });
+    });
+</script>
+        <div class="container">
+            <div id="myCarousel" class="carousel slide">
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarouse1" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarouse1" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol>
+                    <!-- Carousel items -->
+                    <div class="carousel-inner">
+                        <div class="active item">
+                            <img src="http://cpabm.cpami.gov.tw/build/bmdec/download/editPictrure/images/image061.jpg" title="haha">
+                            <div class="carousel-caption">
+                                <h4>First Thumbnail label</h4>
+                                <p>11</p>
+                            </div>
+                        </div>
+
+                            
+                        <div class="item">
+                            <img src="http://www.geeknaut.com/images/windows-wallpapers/Winodws-7-aurora-wallpaper.jpg" alt="笨蛋">
+                            <div class="carousel-caption">
+                                <h4>First Thumbnail label</h4>
+                                <p>222</p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="http://cpabm.cpami.gov.tw/build/bmdec/download/editPictrure/images/image061.jpg" alt="...">
+                            <div class="carousel-caption">
+                                <h4>First Thumbnail label</h4>
+                                <p>333</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Carousel nav -->
+                    <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+                    <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+            </div>
+            <!-- BEGIN: SIGNUP -->
+            <div class="hero-unit row-fluid">
+                <div>
+                <p>
+                    This is a place where you can upload your photos and share to people.<br>
+                    What are you waiting for?<br>
+                    Join us right now.<br>
+                </p>
+                <p>
+                    <a href="#myModal" role="button" class="btn btn-info btn-large" data-toggle="modal">
+                    Sign Up
+                    </a>
+                </p>
+                </div>
+                
+            </div>
+            <!-- END: SIGNUP -->
+
+    <!-- Modal -->
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Sign Up</h3>
+      </div>
+      <div class="modal-body">
+        <div class="form"> 
+            <form action="reg.php" method="post" name="register_form" id="register_form">
+                <div class="form_info">
+                    <label for="email">帳號 (E-mail)<input type = "text" id="email" class="email required" name="email"></label>
+                        <label for="password">密碼<input type = "password" id="password" class="password required" name="password"></label>
+                        <label for="confirm_password">確認密碼<input type = "password" id="confirm_password" class="confirm_password required" name="confirm_password"></label>
+                        <div>性別:</div>
+                        <label for="male" class="sexual"><input id="male"   type="radio"   class="gender" name="gender" value="1" checked><span>男</span></label>
+                        <label for="female" class="sexual"><input id="female"   type="radio" class="gender"name="gender" value="2"><span>女</span></label>    
+                </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button class="btn btn-primary" type="submit" >Confirm</button>
+            </div>
+            </form>
+        </div>
+      </div>
+      
+    </div>
+
+        </div> <!-- /container -->
+    <!-- END: container -->
+{FILE {main_down}}
+<!-- END: main -->
